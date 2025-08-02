@@ -106,13 +106,7 @@ function showDetails(dishId) {
             <div class="modal-dish-info">
                 <h2>${dish.name}</h2>
                 <div class="dish-meta">
-                    <span class="dish-price">$${dish.price.toLocaleString()}</span>
-                    <span class="dish-time"><i class="fas fa-clock"></i> ${
-                      dish.time
-                    }</span>
-                    <span class="dish-calories"><i class="fas fa-fire"></i> ${
-                      dish.calories
-                    } cal</span>
+
                 </div>
                 <p class="dish-description">${dish.description}</p>
 
@@ -145,7 +139,7 @@ function showDetails(dishId) {
             }
 
             .modal-dish-image img {
-                width: 100%;
+                width: 70%;
                 border-radius: 10px;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             }
