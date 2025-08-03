@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entradas - La Cantina de Floor</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./img/logo.jpg" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- Banner compacto optimizado para móvil -->
+    <div class="hero-section">
+      <header class="compact-header">
+        <div class="header-content">
+          <div class="brand-container">
+            <i class="fas fa-cocktail logo-icon"></i>
+            <img
+              src="./img/logo.jpg"
+              alt="Logo de mi empresa"
+              width="100"
+              height="50"
+            />
+            <h1>La Cantina de Floor</h1>
+          </div>
+          <p class="tagline">Sabores únicos, experiencias memorables</p>
+        </div>
+      </header>
+
+      <!-- Navegación entre páginas -->
+      <nav class="main-nav">
+        <ul>
+          <li>
+            <a href="index.html">
+              <i class="fas fa-home"></i><span>Inicio</span>
+            </a>
+          </li>
+          <li>
+            <a href="especialidades.html" class="active">
+              <i class="fas fa-leaf"></i><span>Especialidades</span>
+            </a>
+          </li>
+          <li>
+            <a href="ensaladas.html">
+              <i class="fas fa-drumstick-bite"></i><span>Ensaladas</span>
+            </a>
+          </li>
+          <li>
+            <a href="paraCompartir.html">
+              <i class="fas fa-birthday-cake"></i><span>Para Compartir</span>
+            </a>
+          </li>
+          <li>
+            <a href="zumos.html">
+              <i class="fas fa-glass-cheers"></i
+              ><span>Zumos 100% Naturales</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <main class="menu-container">
+      <section class="menu-section">
+        <div class="section-header">
+          <i class="fas fa-leaf section-icon"></i>
+          <h2>Especialidades</h2>
+          <div class="section-line"></div>
+          <p class="section-description">
+            Deliciosos aperitivos para despertar tu apetito
+          </p>
+        </div>
+
+        <div class="menu-grid">
+          <div class="menu-item featured" onclick="showDetails('bacalao')">
+            <div class="item-image-container">
+              <div class="item-image">
+                <img 
+                  src="./img/bacalao.jpg"
+                  alt="Bacalao"
+                />
+                <div class="price-overlay">$13,50</div>
+              </div>
+            </div>
+            <div class="item-info">
+              <h3>Bacalao </h3>
+              <p>Espectacular bacalao</p>
+              <div class="item-actions">
+                <button
+                  class="view-details-btn"
+                  onclick="showDetails('bacalao')"
+                >
+                  <i class="fas fa-info-circle"></i> Ver Detalles
+                </button>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal con scroll para detalles del plato -->
+    <div id="modal" class="modal">
+      <div class="modal-content scrollable-modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modal-body" class="modal-body-scroll"></div>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3><i class="fas fa-cocktail"></i> La Cantina de Floor</h3>
+          <p>Donde cada momento se vuelve especial</p>
+        </div>
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <p><i class="fas fa-phone"></i> +57 300 123 4567</p>
+          <p><i class="fas fa-envelope"></i> info@cantinafloor.com</p>
+        </div>
+        <div class="footer-section">
+          <h4>Horarios</h4>
+          <p>Lun - Dom: 11:00 AM - 11:00 PM</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 La Cantina de Floor</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

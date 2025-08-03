@@ -1,84 +1,66 @@
 // Variables globales
-let cart = [];
 let isModalOpen = false;
 
-// Datos de los platos para el modal
+// Datos expandidos de los platos para el modal
 const dishData = {
-  "ensalada-cesar": {
-    name: "Ensalada César Gourmet",
-    price: 15000,
-    image: "ensalada_cesar.png",
+  //Especialidades//
+  bacalao: {
+    name: "Bacalao",
+    image: "./img/bacalao.jpg",
     description:
-      "Nuestra ensalada César es una experiencia gourmet única. Preparada con lechuga romana fresca, crujientes, pollo a la parrilla marinado en hierbas aromáticas y nuestro aderezo especial de la casa elaborado con anchoas, parmesano añejado 24 meses y aceite de oliva extra virgen.",
-    ingredients: [
-      "Lechuga romana fresca",
-      "Pollo a la parrilla",
-      "Parmesano añejado",
-      "Aderezo especial",
-      "Crutones artesanales",
-      "Aceite de oliva extra virgen",
-    ],
-    allergens: ["Gluten", "Lácteos", "Pescado (anchoas)"],
-    calories: 280,
-    time: "15 min",
+      "Delicioso bacalao en salsa de coco con tomate y arroz blanco.",
+    ingredients: ["Bacalao", "langostinos", "Salsa de Coco", "Arroz Blanco"],
+    /*pairings: ["Vino blanco seco", "Agua con gas", "Cerveza artesanal"],*/
   },
-  "lomo-pimienta": {
-    name: "Lomo a la Pimienta Premium",
-    price: 32000,
-    image: "lomo_pimienta.png",
+
+  //Ensaladas//
+  "ensalada-cuscus": {
+    name: "Ensalada de Cuscús",
+    image: "./img/ensalada_cuscus.jpg",
     description:
-      "Corte premium de lomo de res, sellado a la perfección y bañado en nuestra exquisita salsa de pimienta verde. Acompañado de papas al horno con romero y tomillo, que complementan perfectamente los sabores intensos de este plato estrella.",
+      "Ligera ensalada de cuscús con verduras de temporada, dátiles y una vinagreta de limón.",
     ingredients: [
-      "Lomo de res premium",
-      "Salsa de pimienta verde",
-      "Papas al horno",
-      "Romero fresco",
-      "Tomillo",
-      "Mantequilla de hierbas",
+      "Cuscús espojoso",
+      "Cebolla y tomate",
+      "Aguacate",
+      "Rabanos y dátiles",
+      "Salsa de la casa",
     ],
-    allergens: ["Lácteos"],
-    calories: 450,
-    time: "25 min",
   },
-  flan: {
-    name: "Flan de Caramelo Casero",
-    price: 10000,
-    image: "flan_caramelo.png",
+
+  // Para Compartir//
+
+  "nachos": {
+    name: "Nachos de la Casa",
+    price: 24000,
+    image: "./img/nachos.jpg",
     description:
-      "Nuestro flan casero es preparado diariamente siguiendo la receta tradicional de la abuela. Con caramelo natural hecho en casa y crema batida fresca, es el final perfecto para cualquier comida especial.",
+      "nachos con queso cheddar, carne picada, alubias, jalapeños, salsas y picadito de verduras.",
     ingredients: [
-      "Huevos frescos",
-      "Leche entera",
-      "Caramelo natural",
-      "Crema batida",
-      "Vainilla natural",
-      "Azúcar",
+        "Nachos",
+      "Queso cheddar",
+      "Carne mexicana",
+      "Queso mozarrella",
+      "Jalapeños",
+      "Salsa de la casa",
     ],
-    allergens: ["Huevos", "Lácteos"],
-    calories: 320,
-    time: "5 min",
   },
-  "limonada-coco": {
-    name: "Limonada de Coco Tropical",
-    price: 8000,
-    image: "limonada_coco.png",
+
+  //Zumos 100% Naturales//
+  "ice-cafe": {
+    name: "Ice Cafe",
+    image: "./img/ice_cafe.jpg",
     description:
-      "Bebida refrescante y tropical que combina el sabor cítrico del limón natural con la suavidad cremosa del coco. Servida bien fría con hielo y decorada con menta fresca para una experiencia verdaderamente refrescante.",
+      "Un refrescante cafe granizado con una bola de helado para dar un toque mas frio.",
     ingredients: [
-      "Limón natural",
-      "Crema de coco",
-      "Menta fresca",
-      "Hielo",
-      "Azúcar natural",
-      "Agua filtrada",
+      "Cafe espresso",
+      "Hielo triturado",
+      "Helado de vainilla",
     ],
-    allergens: ["Coco"],
-    calories: 150,
-    time: "3 min",
   },
 };
 
-// Función para desplazamiento suave
+// Función para desplazamiento suave (mantenida para compatibilidad)
 function smoothScroll(targetId) {
   const target = document.getElementById(targetId);
   if (target) {
@@ -89,7 +71,12 @@ function smoothScroll(targetId) {
   }
 }
 
-// Función para mostrar detalles en modal
+// Función para navegar a otra página
+function goToPage(pageUrl) {
+  window.location.href = pageUrl;
+}
+
+// Función para mostrar detalles en modal con scroll
 function showDetails(dishId) {
   const dish = dishData[dishId];
   if (!dish) return;
@@ -98,25 +85,42 @@ function showDetails(dishId) {
 
   modalBody.innerHTML = `
         <div class="modal-dish-details">
-            <div class="modal-dish-image">
-                <img src="${dish.image}" alt="${
+            <div class="modal-header-section">
+                <div class="modal-dish-image">
+                    <img src="${dish.image}" alt="${
     dish.name
   }" onerror="this.style.display='none';">
-            </div>
-            <div class="modal-dish-info">
-                <h2>${dish.name}</h2>
-                <div class="dish-meta">
-
+                    
                 </div>
-                <p class="dish-description">${dish.description}</p>
+                <div class="modal-dish-title">
+                    <h2>${dish.name}</h2>
+                </div>
+            </div>
 
-                <div class="dish-ingredients">
-                    <h4><i class="fas fa-list"></i> Ingredientes:</h4>
-                    <ul>
+            <div class="modal-content-sections">
+                <div class="dish-description-section">
+                    <h3><i class="fas fa-info-circle"></i> Descripción</h3>
+                    <p class="dish-description">${dish.description}</p>
+                </div>
+
+                <div class="dish-ingredients-section">
+                    <h3><i class="fas fa-list"></i> Ingredientes Principales</h3>
+                    <div class="ingredients-grid">
                         ${dish.ingredients
-                          .map((ingredient) => `<li>${ingredient}</li>`)
+                          .map(
+                            (ingredient) =>
+                              `<span class="ingredient-tag">${ingredient}</span>`
+                          )
                           .join("")}
-                    </ul>
+                    </div>
+                </div>
+
+                <div class="modal-footer-actions">
+                    <button class="contact-btn" onclick="contactRestaurant('${
+                      dish.name
+                    }')">
+                        <i class="fas fa-phone"></i> Reservar Mesa
+                    </button>
                 </div>
             </div>
         </div>
@@ -126,174 +130,328 @@ function showDetails(dishId) {
   isModalOpen = true;
   document.body.style.overflow = "hidden";
 
-  // Agregar estilos CSS para el modal si no existen
+  // Scroll al inicio del modal
+  modalBody.scrollTop = 0;
+
+  // Agregar estilos CSS para el modal scrollable si no existen
   if (!document.getElementById("modal-styles")) {
     const modalStyles = document.createElement("style");
     modalStyles.id = "modal-styles";
     modalStyles.textContent = `
+            .scrollable-modal {
+                max-height: 90vh;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            .modal-body-scroll {
+                max-height: calc(90vh - 4rem);
+                overflow-y: auto;
+                overflow-x: hidden;
+                padding-right: 10px;
+            }
+
             .modal-dish-details {
+                display: block;
+                width: 100%;
+            }
+
+            .modal-header-section {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1.5fr;
                 gap: 2rem;
                 align-items: start;
+                margin-bottom: 2rem;
+                padding-bottom: 2rem;
+                border-bottom: 2px solid #eee;
+            }
+
+            .modal-dish-image {
+                position: relative;
             }
 
             .modal-dish-image img {
-                width: 70%;
-                border-radius: 10px;
+                width: 100%;
+                height: 350px;
+                justify-self: center;
+                border-radius: 12px;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                gap: 1rem;
+                border-radius: 12px;
+                object-fit: cover;
             }
 
-            .modal-dish-info h2 {
+            .modal-price-badge {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                background: linear-gradient(135deg, #FFD700, #FFA500);
+                color: #2c3e50;
+                padding: 0.8rem 1.2rem;
+                border-radius: 25px;
+                font-size: 1.3rem;
+                font-weight: bold;
+                font-family: 'Playfair Display', serif;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            }
+
+            .modal-dish-title h2 {
                 color: var(--primary-color);
                 margin-bottom: 1rem;
                 font-family: 'Playfair Display', serif;
-            }
-
-            .dish-meta {
-                display: flex;
-                gap: 1rem;
-                margin-bottom: 1rem;
-                flex-wrap: wrap;
-            }
-
-            .dish-meta span {
-                background: #f8f9fa;
-                padding: 0.5rem 1rem;
-                border-radius: 20px;
-                font-size: 0.9rem;
-                display: flex;
-                align-items: center;
-                gap: 0.3rem;
-            }
-
-            .dish-price {
-                background: var(--gradient-primary) !important;
-                color: white !important;
-                font-weight: bold;
-            }
-
-            .dish-description {
-                margin-bottom: 1.5rem;
-                line-height: 1.6;
-                color: #666;
-            }
-
-            .dish-ingredients, .dish-allergens {
-                margin-bottom: 1.5rem;
-            }
-
-            .dish-ingredients h4, .dish-allergens h4 {
-                color: var(--text-dark);
-                margin-bottom: 0.5rem;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-            }
-
-            .dish-ingredients ul {
-                list-style: none;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 0.5rem;
-            }
-
-            .dish-ingredients li {
-                background: #e8f5e8;
-                padding: 0.3rem 0.8rem;
-                border-radius: 15px;
-                font-size: 0.85rem;
-            }
-
-            .allergen-tags {
-                display: flex;
-                gap: 0.5rem;
-                flex-wrap: wrap;
-            }
-
-            .allergen-tag {
-                background: #fff3cd;
-                color: #856404;
-                padding: 0.3rem 0.8rem;
-                border-radius: 15px;
-                font-size: 0.85rem;
-                border: 1px solid #ffeaa7;
-            }
-
-            .modal-actions {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-top: 2rem;
-                gap: 1rem;
-            }
-
-            .quantity-selector {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-                background: #f8f9fa;
-                padding: 0.5rem;
-                border-radius: 25px;
-            }
-
-            .quantity-selector button {
-                width: 35px;
-                height: 35px;
-                border: none;
-                background: var(--primary-color);
-                color: white;
-                border-radius: 50%;
-                cursor: pointer;
-                font-weight: bold;
-                transition: all 0.3s ease;
-            }
-
-            .quantity-selector button:hover {
-                background: var(--secondary-color);
-                transform: scale(1.1);
-            }
-
-            .quantity-selector span {
-                font-weight: bold;
-                font-size: 1.1rem;
-                min-width: 30px;
+                font-size: 2rem;
+                line-height: 1.2;
                 text-align: center;
             }
 
-            .add-to-cart-btn {
-                background: var(--gradient-primary);
-                color: white;
-                border: none;
-                padding: 1rem 2rem;
-                border-radius: 25px;
-                cursor: pointer;
-                font-weight: bold;
-                transition: all 0.3s ease;
+            .dish-rating {
                 display: flex;
                 align-items: center;
                 gap: 0.5rem;
+                margin-bottom: 1rem;
             }
 
-            .add-to-cart-btn:hover {
+            .dish-rating i {
+                color: #FFD700;
+                font-size: 1.2rem;
+            }
+
+            .rating-text {
+                color: #666;
+                font-weight: 600;
+                margin-left: 0.5rem;
+            }
+
+            .modal-content-sections {
+                display: block;
+            }
+
+            .dish-description-section, 
+            .dish-ingredients-section, 
+            .dish-preparation-section, 
+            .chef-tips-section, 
+            .pairings-section {
+                margin-bottom: 2.5rem;
+                padding: 1.5rem;
+                background: #f8f9fa;
+                border-radius: 12px;
+                border-left: 4px solid var(--primary-color);
+            }
+
+            .modal-content-sections h3 {
+                color: var(--primary-color);
+                margin-bottom: 1.2rem;
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+                font-size: 1.3rem;
+                font-weight: 600;
+                font-family: 'Playfair Display', serif;
+            }
+
+            .dish-description {
+                line-height: 1.8;
+                color: #555;
+                font-size: 1.05rem;
+                text-align: justify;
+            }
+
+            .ingredients-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1rem;
+            }
+
+            .ingredient-tag {
+                background: linear-gradient(135deg, #e8f5e8, #d4edda);
+                color: #2d5a2d;
+                padding: 0.8rem 1.2rem;
+                border-radius: 25px;
+                font-size: 0.95rem;
+                text-align: center;
+                border: 2px solid #c3e6cb;
+                font-weight: 500;
+                transition: transform 0.2s ease;
+            }
+
+            .ingredient-tag:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 4px 15px rgba(183, 28, 28, 0.3);
+            }
+
+            .preparation-steps {
+                list-style: none;
+                counter-reset: step-counter;
+                padding-left: 0;
+            }
+
+            .preparation-steps li {
+                counter-increment: step-counter;
+                margin-bottom: 1.2rem;
+                padding: 1rem 1.5rem;
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                position: relative;
+                padding-left: 4rem;
+                line-height: 1.6;
+            }
+
+            .preparation-steps li::before {
+                content: counter(step-counter);
+                position: absolute;
+                left: 1rem;
+                top: 1rem;
+                background: var(--primary-color);
+                color: white;
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 0.9rem;
+            }
+
+            .chef-tip {
+                background: white;
+                padding: 1.5rem;
+                border-radius: 10px;
+                border-left: 4px solid #FFD700;
+                font-style: italic;
+            }
+
+            .chef-tip p {
+                font-size: 1.1rem;
+                line-height: 1.7;
+                color: #444;
+                margin-bottom: 1rem;
+            }
+
+            .chef-signature {
+                display: block;
+                text-align: right;
+                color: var(--primary-color);
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+
+            .pairings-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .pairing-tag {
+                background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+                color: #856404;
+                padding: 0.8rem 1.5rem;
+                border-radius: 25px;
+                font-size: 0.95rem;
+                border: 2px solid #ffd700;
+                font-weight: 500;
+                transition: transform 0.2s ease;
+            }
+
+            .pairing-tag:hover {
+                transform: translateY(-2px);
+            }
+
+            .modal-footer-actions {
+                display: flex;
+                justify-content: space-between;
+                gap: 1.5rem;
+                margin-top: 3rem;
+                padding-top: 2rem;
+                border-top: 2px solid #eee;
+            }
+
+            .close-modal-btn, .contact-btn {
+                padding: 1rem 2rem;
+                border: none;
+                border-radius: 30px;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+                flex: 1;
+                justify-content: center;
+            }
+
+            .close-modal-btn {
+                background: #6c757d;
+                color: white;
+            }
+
+            .close-modal-btn:hover {
+                background: #5a6268;
+                transform: translateY(-2px);
+            }
+
+            .contact-btn {
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                color: white;
+            }
+
+            .contact-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 18px rgba(139, 69, 19, 0.4);
+            }
+
+            /* Scrollbar personalizada para el modal */
+            .modal-body-scroll::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            .modal-body-scroll::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 4px;
+            }
+
+            .modal-body-scroll::-webkit-scrollbar-thumb {
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                border-radius: 4px;
+            }
+
+            .modal-body-scroll::-webkit-scrollbar-thumb:hover {
+                background: var(--secondary-color);
             }
 
             @media (max-width: 768px) {
-                .modal-dish-details {
+                .modal-header-section {
                     grid-template-columns: 1fr;
-                    gap: 1rem;
+                    gap: 1.5rem;
                 }
 
-                .modal-actions {
+                .modal-dish-title h2 {
+                    font-size: 1.6rem;
+                }
+
+                .modal-footer-actions {
                     flex-direction: column;
                     gap: 1rem;
                 }
 
-                .add-to-cart-btn {
+                .close-modal-btn, .contact-btn {
                     width: 100%;
+                    padding: 1.2rem 2rem;
+                }
+
+                .ingredients-grid {
+                    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                    gap: 0.8rem;
+                }
+
+                .pairings-list {
                     justify-content: center;
+                }
+
+                .modal-price-badge {
+                    font-size: 1.1rem;
+                    padding: 0.6rem 1rem;
                 }
             }
         `;
@@ -308,453 +466,39 @@ function closeModal() {
   document.body.style.overflow = "auto";
 }
 
-// Función para cambiar cantidad
-function changeQuantity(change) {
-  const quantityElement = document.getElementById("quantity");
-  let currentQuantity = parseInt(quantityElement.textContent);
-  currentQuantity = Math.max(1, currentQuantity + change);
-  quantityElement.textContent = currentQuantity;
-}
-
-// Función para agregar al carrito
-function addToCart(dishId) {
-  const dish = dishData[dishId];
-  const quantity = parseInt(document.getElementById("quantity").textContent);
-
-  // Buscar si el plato ya está en el carrito
-  const existingItem = cart.find((item) => item.id === dishId);
-
-  if (existingItem) {
-    existingItem.quantity += quantity;
-  } else {
-    cart.push({
-      id: dishId,
-      name: dish.name,
-      price: dish.price,
-      quantity: quantity,
-      image: dish.image,
-    });
-  }
-
-  updateCartCount();
-  closeModal();
-  showCartNotification(dish.name, quantity);
-}
-
-// Función para actualizar contador del carrito
-function updateCartCount() {
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  document.getElementById("cart-count").textContent = totalItems;
-}
-
-// Función para mostrar notificación del carrito
-function showCartNotification(dishName, quantity) {
-  // Crear notificación
-  const notification = document.createElement("div");
-  notification.className = "cart-notification";
-  notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas fa-check-circle"></i>
-            <span>¡${quantity}x ${dishName} agregado al carrito!</span>
-        </div>
-    `;
-
-  // Agregar estilos para la notificación
-  if (!document.getElementById("notification-styles")) {
-    const notificationStyles = document.createElement("style");
-    notificationStyles.id = "notification-styles";
-    notificationStyles.textContent = `
-            .cart-notification {
-                position: fixed;
-                top: 2rem;
-                right: 2rem;
-                background: #27ae60;
-                color: white;
-                padding: 1rem 1.5rem;
-                border-radius: 10px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                z-index: 3000;
-                animation: slideInRight 0.3s ease, slideOutRight 0.3s ease 2.7s;
-            }
-
-            .notification-content {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-            }
-
-            @keyframes slideInRight {
-                from {
-                    transform: translateX(100%);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
-
-            @keyframes slideOutRight {
-                from {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-                to {
-                    transform: translateX(100%);
-                    opacity: 0;
-                }
-            }
-        `;
-    document.head.appendChild(notificationStyles);
-  }
-
-  document.body.appendChild(notification);
-
-  // Remover notificación después de 3 segundos
-  setTimeout(() => {
-    if (notification.parentNode) {
-      notification.parentNode.removeChild(notification);
-    }
-  }, 3000);
-}
-
-// Función para alternar carrito
-function toggleCart() {
-  if (cart.length === 0) {
-    alert("Tu carrito está vacío. ¡Agrega algunos platos deliciosos!");
-    return;
-  }
-
-  // Crear modal del carrito
-  const cartModal = document.createElement("div");
-  cartModal.className = "modal";
-  cartModal.id = "cart-modal";
-
-  const cartItems = cart
-    .map(
-      (item) => `
-        <div class="cart-item">
-            <img src="${item.image}" alt="${
-        item.name
-      }" onerror="this.style.display='none';">
-            <div class="cart-item-info">
-                <h4>${item.name}</h4>
-                <p>Cantidad: ${item.quantity}</p>
-                <p class="cart-item-price">$${(
-                  item.price * item.quantity
-                ).toLocaleString()}</p>
-            </div>
-            <button onclick="removeFromCart('${item.id}')" class="remove-btn">
-                <i class="fas fa-trash"></i>
-            </button>
-        </div>
-    `
-    )
-    .join("");
-
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
-  cartModal.innerHTML = `
-        <div class="modal-content">
-            <span class="close" onclick="closeCartModal()">&times;</span>
-            <div id="cart-modal-body">
-                <h2><i class="fas fa-shopping-cart"></i> Tu Carrito</h2>
-                <div class="cart-items">
-                    ${cartItems}
-                </div>
-                <div class="cart-total">
-                    <h3>Total: $${total.toLocaleString()}</h3>
-                </div>
-                <div class="cart-actions">
-                    <button onclick="clearCart()" class="clear-cart-btn">
-                        <i class="fas fa-trash-alt"></i> Vaciar Carrito
-                    </button>
-                    <button onclick="checkout()" class="checkout-btn">
-                        <i class="fas fa-credit-card"></i> Proceder al Pago
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-
-  // Agregar estilos para el carrito si no existen
-  if (!document.getElementById("cart-styles")) {
-    const cartStyles = document.createElement("style");
-    cartStyles.id = "cart-styles";
-    cartStyles.textContent = `
-            .cart-items {
-                max-height: 400px;
-                overflow-y: auto;
-                margin: 1rem 0;
-            }
-
-            .cart-item {
-                display: flex;
-                align-items: center;
-                padding: 1rem;
-                border-bottom: 1px solid #eee;
-                gap: 1rem;
-            }
-
-            .cart-item img {
-                width: 60px;
-                height: 60px;
-                object-fit: cover;
-                border-radius: 8px;
-            }
-
-            .cart-item-info {
-                flex: 1;
-            }
-
-            .cart-item-info h4 {
-                margin-bottom: 0.5rem;
-                color: var(--text-dark);
-            }
-
-            .cart-item-price {
-                font-weight: bold;
-                color: var(--primary-color);
-            }
-
-            .remove-btn {
-                background: #e74c3c;
-                color: white;
-                border: none;
-                width: 35px;
-                height: 35px;
-                border-radius: 50%;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-
-            .remove-btn:hover {
-                background: #c0392b;
-                transform: scale(1.1);
-            }
-
-            .cart-total {
-                text-align: center;
-                padding: 1rem;
-                background: #f8f9fa;
-                border-radius: 10px;
-                margin: 1rem 0;
-            }
-
-            .cart-total h3 {
-                color: var(--primary-color);
-                font-family: 'Playfair Display', serif;
-            }
-
-            .cart-actions {
-                display: flex;
-                gap: 1rem;
-                justify-content: center;
-            }
-
-            .clear-cart-btn, .checkout-btn {
-                padding: 0.8rem 1.5rem;
-                border: none;
-                border-radius: 25px;
-                cursor: pointer;
-                font-weight: bold;
-                transition: all 0.3s ease;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-            }
-
-            .clear-cart-btn {
-                background: #6c757d;
-                color: white;
-            }
-
-            .clear-cart-btn:hover {
-                background: #5a6268;
-            }
-
-            .checkout-btn {
-                background: var(--gradient-primary);
-                color: white;
-            }
-
-            .checkout-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 15px rgba(183, 28, 28, 0.3);
-            }
-        `;
-    document.head.appendChild(cartStyles);
-  }
-
-  document.body.appendChild(cartModal);
-  cartModal.style.display = "block";
-  document.body.style.overflow = "hidden";
-}
-
-// Función para cerrar modal del carrito
-function closeCartModal() {
-  const cartModal = document.getElementById("cart-modal");
-  if (cartModal) {
-    cartModal.remove();
-    document.body.style.overflow = "auto";
-  }
-}
-
-// Función para remover del carrito
-function removeFromCart(dishId) {
-  cart = cart.filter((item) => item.id !== dishId);
-  updateCartCount();
-  closeCartModal();
-
-  if (cart.length > 0) {
-    toggleCart();
-  }
-}
-
-// Función para vaciar carrito
-function clearCart() {
-  cart = [];
-  updateCartCount();
-  closeCartModal();
-  alert("Carrito vaciado correctamente");
-}
-
-// Función para proceder al pago
-function checkout() {
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  alert(
-    `¡Gracias por tu pedido!\n\nTotal: $${total.toLocaleString()}\n\nEn breve nos pondremos en contacto contigo para confirmar tu orden.`
-  );
-  clearCart();
-}
-
-// Funciones de inicialización
-function initScrollAnimations() {
-  const sections = document.querySelectorAll(".menu-section");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("fade-in");
-        }
-      });
-    },
-    {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    }
-  );
-
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
-}
-
-function initParallaxEffects() {
-  window.addEventListener("scroll", () => {
-    const scrolled = window.pageYOffset;
-    const rate = scrolled * -0.5;
-
-    const hero = document.querySelector(".hero-section");
-    if (hero) {
-      hero.style.transform = `translateY(${rate}px)`;
-    }
-  });
-}
-
-function initSmoothScrolling() {
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    });
-  });
+// Función para contactar al restaurante
+function contactRestaurant(dishName) {
+  const phoneNumber = "+573158852282";
+  const message = `Hola! Me interesa hacer una reserva y me gustaría más información sobre: ${dishName}`;
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    message
+  )}`;
+  window.open(whatsappUrl, "_blank");
 }
 
 // Event listeners
 document.addEventListener("DOMContentLoaded", function () {
-  initScrollAnimations();
-  initSmoothScrolling();
-  updateCartCount();
-
   // Cerrar modal con ESC
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-      if (isModalOpen) {
-        closeModal();
-      }
-      closeCartModal();
+    if (e.key === "Escape" && isModalOpen) {
+      closeModal();
     }
   });
 
   // Cerrar modal clickeando fuera
   window.addEventListener("click", function (e) {
     const modal = document.getElementById("modal");
-    const cartModal = document.getElementById("cart-modal");
-
     if (e.target === modal) {
       closeModal();
     }
-    if (e.target === cartModal) {
-      closeCartModal();
-    }
   });
 
-  // Efecto de carga
+  // Efectos de carga suaves
   setTimeout(() => {
     document.body.classList.add("loaded");
-  }, 500);
+  }, 300);
 });
 
-// Funciones adicionales para mejorar la experiencia
-function addLoadingStates() {
-  const style = document.createElement("style");
-  style.textContent = `
-        body:not(.loaded) .menu-section {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        body.loaded .menu-section {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.6s ease;
-        }
-
-        .loading {
-            pointer-events: none;
-            opacity: 0.7;
-        }
-
-        .loading::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 20px;
-            height: 20px;
-            margin: -10px 0 0 -10px;
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    `;
-  document.head.appendChild(style);
-}
-
-// Inicializar estados de carga
-addLoadingStates();
-
-console.log("🍽️ Restaurante La Sazón - Sistema cargado correctamente");
+console.log(
+  "🍹 La Cantina de Floor - Navegación por páginas cargada correctamente"
+);

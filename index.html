@@ -3,282 +3,185 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Restaurante La Sazón - Menú</title>
+    <title>La Cantina de Floor - Inicio</title>
     <link rel="stylesheet" href="styles.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
+      <link rel="icon" href="./img/logo.jpg" type="image/x-icon">
   </head>
   <body>
+    <!-- Banner compacto optimizado para móvil -->
     <div class="hero-section">
-      <header>
+      <header class="compact-header">
         <div class="header-content">
-          <i class="fas fa-utensils logo-icon"></i>
-          <h1>Restaurante La Sazón</h1>
-          <p class="tagline">Sabores auténticos, calidad premium</p>
+          <div class="brand-container">
+            <i class="fas fa-cocktail logo-icon"></i>
+            <img
+              src="./img/logo.jpg"
+              alt="Logo de mi empresa"
+              width="100"
+              height="50"
+            />
+            <h1>La Cantina de Floor</h1>
+          </div>
+          <p class="tagline">Sabores únicos, experiencias memorables</p>
         </div>
       </header>
 
+      <!-- Navegación entre páginas -->
       <nav class="main-nav">
         <ul>
           <li>
-            <a href="#entradas" onclick="smoothScroll('entradas')"
-              ><i class="fas fa-leaf"></i> Entradas</a
-            >
+            <a href="index.html" class="active">
+              <i class="fas fa-home"></i><span>Inicio</span>
+            </a>
           </li>
           <li>
-            <a href="#platos-fuertes" onclick="smoothScroll('platos-fuertes')"
-              ><i class="fas fa-drumstick-bite"></i> Platos Fuertes</a
-            >
+            <a href="especialidades.html">
+              <i class="fas fa-leaf"></i><span>Especialidades</span>
+            </a>
           </li>
           <li>
-            <a href="#postres" onclick="smoothScroll('postres')"
-              ><i class="fas fa-birthday-cake"></i> Postres</a
-            >
+            <a href="ensaladas.html">
+              <i class="fas fa-drumstick-bite"></i><span>Ensaladas</span>
+            </a>
           </li>
           <li>
-            <a href="#bebidas" onclick="smoothScroll('bebidas')"
-              ><i class="fas fa-glass-cheers"></i> Bebidas</a
-            >
+            <a href="paraCompartir.html">
+              <i class="fas fa-birthday-cake"></i><span>Para Compartir</span>
+            </a>
+          </li>
+          <li>
+            <a href="zumos.html">
+              <i class="fas fa-glass-cheers"></i><span>zumos 100% Naturales</span>
+            </a>
           </li>
         </ul>
       </nav>
     </div>
 
     <main class="menu-container">
-      <section id="entradas" class="menu-section">
+
+      <!-- Navegación rápida por categorías -->
         <div class="section-header">
-          <i class="fas fa-leaf section-icon"></i>
-          <h2>Entradas</h2>
+          <i class="fas fa-compass section-icon"></i>
+          <h2>Explora Nuestro Menú</h2>
           <div class="section-line"></div>
         </div>
 
-        <div class="menu-grid">
-          <div
-            class="menu-item featured"
-            onclick="showDetails('ensalada-cesar')"
-          >
-            <div class="item-image">
-              <img
-                src="ensalada_cesar.png"
-                alt="Ensalada César"
-                loading="lazy"
-              />
-              <div class="item-overlay">
-                <i class="fas fa-eye"></i>
-                <span>Ver detalles</span>
-              </div>
+        <div class="categories-grid">
+          <a href="especialidades.html" class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-leaf"><img src="./img/bacalao.jpg"></i>
             </div>
-            <div class="item-content">
-              <h3>
-                Ensalada César Gourmet <i class="fas fa-star premium"></i>
-              </h3>
-              <p>
-                Lechuga romana fresca con pollo a la parrilla, parmesano añejado
-                y aderezo especial
-              </p>
-              <div class="item-footer">
-                <span class="price">$15.000</span>
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-              </div>
+            <h3>Especialidades</h3>
+            <p>
+              Especialidades de la casa para comenzar tu experiencia gastronómica.
+            </p>
+            <div class="category-badge">Explorar</div>
+          </a>
+
+          <a href="ensaladas.html" class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-drumstick-bite"><img src="./img/ensalada_cuscus.jpg"></i>
             </div>
-          </div>
+            <h3>Ensaladas</h3>
+            <p>
+              Nuestras especialidades de la casa con las mejores ensaladas.
+            </p>
+            <div class="category-badge">Explorar</div>
+          </a>
+
+          <a href="paraCompartir.html" class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-birthday-cake"><img src="./img/nachos.jpg"></i>
+            </div>
+            <h3>Para Compartir</h3>
+            <p>El final perfecto para que compartas con quien mas gustes.</p>
+            <div class="category-badge">Explorar</div>
+          </a>
+
+          <a href="zumos.html" class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-glass-cheers"><img src="./img/ice_cafe.jpg" ></i>
+            </div>
+            <h3>Zumos</h3>
+            <p>Refrescantes zumos naturales.</p>
+            <div class="category-badge">Explorar</div>
+          </a>
         </div>
       </section>
 
-      <section id="platos-fuertes" class="menu-section">
+      <!-- Sección de destacados -->
+      <section class="featured-section">
         <div class="section-header">
-          <i class="fas fa-drumstick-bite section-icon"></i>
-          <h2>Platos Principales</h2>
+          <i class="fas fa-star section-icon"></i>
+          <h2>Platos Destacados</h2>
           <div class="section-line"></div>
         </div>
 
-        <div class="menu-grid">
-          <div
-            class="menu-item featured"
-            onclick="showDetails('lomo-pimienta')"
-          >
-            <div class="item-image">
+        <div class="featured-grid">
+          <div class="featured-item" onclick="goToPage('ensaladas.html')">
+            <div class="featured-image">
               <img
-                src="lomo_pimienta.png"
-                alt="Lomo a la pimienta"
+                src="./img/ensalada_cuscus.jpg"
+                alt="Ensalada Cuscús"
                 loading="lazy"
               />
-              <div class="item-overlay">
-                <i class="fas fa-eye"></i>
-                <span>Ver detalles</span>
+              <div class="featured-overlay">
+                <i class="fas fa-arrow-right"></i>
+                <span>Ver ensaladas</span>
               </div>
             </div>
-            <div class="item-content">
-              <h3>Lomo a la Pimienta <i class="fas fa-star premium"></i></h3>
-              <p>
-                Lomo de res en salsa de pimienta verde con papas al horno
-                aromáticas
-              </p>
-              <div class="item-footer">
-                <span class="price">$32.000</span>
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="postres" class="menu-section">
-        <div class="section-header">
-          <i class="fas fa-birthday-cake section-icon"></i>
-          <h2>Postres</h2>
-          <div class="section-line"></div>
-        </div>
-
-        <div class="menu-grid">
-          <div class="menu-item featured" onclick="showDetails('flan')">
-            <div class="item-image">
-              <img
-                src="flan_caramelo.png"
-                alt="Flan de caramelo"
-                loading="lazy"
-              />
-              <div class="item-overlay">
-                <i class="fas fa-eye"></i>
-                <span>Ver detalles</span>
-              </div>
-            </div>
-            <div class="item-content">
-              <h3>Flan de Caramelo <i class="fas fa-heart popular"></i></h3>
-              <p>
-                Clásico flan artesanal con caramelo natural y crema batida
-                fresca
-              </p>
-              <div class="item-footer">
-                <span class="price">$10.000</span>
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-              </div>
+            <div class="featured-info">
+              <h4>Ensalada Cuscús</h4>
+              <p>Nuestra especialidad más solicitada</p>
+              <span class="featured-price">$9,50</span>
             </div>
           </div>
 
-          <!--                 <div class="menu-item" onclick="showDetails('tiramisu')">
-                    <div class="item-image">
-                        <div class="placeholder-image">
-                            <i class="fas fa-cookie-bite"></i>
-                        </div>
-                    </div>
-                    <div class="item-content">
-                        <h3>Tiramisú Italiano</h3>
-                        <p>Auténtico postre italiano con café espresso y mascarpone</p>
-                        <div class="item-footer">
-                            <span class="price">$14.000</span>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-        </div>
-      </section>
-
-      <section id="bebidas" class="menu-section">
-        <div class="section-header">
-          <i class="fas fa-glass-cheers section-icon"></i>
-          <h2>Bebidas</h2>
-          <div class="section-line"></div>
-        </div>
-
-        <div class="menu-grid">
-          <div
-            class="menu-item featured"
-            onclick="showDetails('limonada-coco')"
-          >
-            <div class="item-image">
+          <div class="featured-item" onclick="goToPage('especialidades.html')">
+            <div class="featured-image">
               <img
-                src="limonada_coco.png"
-                alt="Limonada de coco"
-                loading="lazy"
+                src="./img/bacalao.jpg"
+                alt="Bacalao"
+               
               />
-              <div class="item-overlay">
-                <i class="fas fa-eye"></i>
-                <span>Ver detalles</span>
+              <div class="featured-overlay">
+                <i class="fas fa-arrow-right"></i>
+                <span>Ver en Principales</span>
               </div>
             </div>
-            <div class="item-content">
-              <h3>Limonada de Coco <i class="fas fa-leaf natural"></i></h3>
-              <p>Refrescante mezcla de limón natural con crema de coco</p>
-              <div class="item-footer">
-                <span class="price">$8.000</span>
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-                </div>
-              </div>
+            <div class="featured-info">
+              <h4>Bacalao</h4>
+              <p>Delisioso bacalao</p>
+              <span class="featured-price">$13,50</span>
             </div>
           </div>
-
         </div>
       </section>
     </main>
 
-    <!-- Modal para detalles -->
-    <div id="modal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <div id="modal-body"></div>
-      </div>
-    </div>
-
-    <!-- Carrito flotante -->
-    <div class="floating-cart" onclick="toggleCart()">
-      <i class="fas fa-shopping-cart"></i>
-      <span id="cart-count">0</span>
-    </div>
-
     <footer class="main-footer">
       <div class="footer-content">
         <div class="footer-section">
-          <h3><i class="fas fa-utensils"></i> La Sazón</h3>
-          <p>Calidad y sabor desde 2020</p>
+          <h3><i class="fas fa-cocktail"></i> La Cantina de Floor</h3>
+          <p>Donde cada momento se vuelve especial</p>
         </div>
         <div class="footer-section">
           <h4>Contacto</h4>
           <p><i class="fas fa-phone"></i> +57 300 123 4567</p>
-          <p><i class="fas fa-envelope"></i> info@lasazon.com</p>
+          <p><i class="fas fa-envelope"></i> info@cantinafloor.com</p>
         </div>
         <div class="footer-section">
           <h4>Horarios</h4>
-          <p>Lun - Dom: 11:00 AM - 10:00 PM</p>
+          <p>Lun - Dom: 11:00 AM - 11:00 PM</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Restaurante La Sazón</p>
+        <p>&copy; 2025 La Cantina de Floor</p>
       </div>
     </footer>
 
