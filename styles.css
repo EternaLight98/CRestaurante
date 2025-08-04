@@ -289,7 +289,7 @@ body {
     font-size: 1.8rem;
 }
 
-.category-card h3 {
+.category-card h2 {
     font-family: 'Playfair Display', serif;
     font-size: 1.3rem;
     background: var(--gradient-primary);  /* CAMBIAR A FONDO MARRÓN */
@@ -410,7 +410,7 @@ body {
 .featured-info h4 {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
-    color: var(--text-dark);
+    color: rgba(0, 0, 0, 2);
     margin-bottom: 0.5rem;
 }
 
@@ -467,7 +467,7 @@ body {
 .section-header h2 {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
-    color: var(--text-dark);
+    color: rgba(0, 0, 0, 2);
     margin-bottom: 0.8rem;
     position: relative;
     display: inline-block;
@@ -573,7 +573,7 @@ body {
     bottom: 15px;
     right: 15px;
     background: var(--gradient-gold);
-    color: var(--text-dark);
+    color: rgba(0, 0, 0, 2);
     padding: 0.8rem 1.2rem;
     border-radius: 25px;
     font-size: 1.1rem;
@@ -592,7 +592,7 @@ body {
 .item-info h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
-    color: var(--text-dark);
+    color: rgba(0, 0, 0, 2);
     margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
@@ -600,7 +600,7 @@ body {
 }
 
 .item-info p {
-    color: #666;
+    color: rgba(0, 0, 0, 2);
     font-size: 0.9rem;
     line-height: 1.5;
     margin-bottom: 1rem;
@@ -710,7 +710,7 @@ body {
     cursor: pointer;
     transition: color 0.3s ease;
     z-index: 10;
-    background: rgba(255,255,255,0.9);
+    background: rgba(10, 7, 7, 0.9);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -1023,6 +1023,5 @@ body {
   object-fit: cover; /* Muestra la imagen completa sin recortar */
   display: block;
   margin: 0 auto;
-  color: black;
 }
 
