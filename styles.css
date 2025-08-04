@@ -273,6 +273,7 @@ body {
     transform: translateY(-5px);
     border-color: var(--accent-color);
     box-shadow: var(--shadow-medium);
+     color: var(--text-black); 
 }
 
 .category-icon {
@@ -291,7 +292,8 @@ body {
 .category-card h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.3rem;
-    color: var(--text-dark);
+    background: var(--gradient-primary);  /* CAMBIAR A FONDO MARRÓN */
+    color: rgba(0, 0, 0, 2);
     margin-bottom: 1rem;
 }
 
@@ -299,11 +301,12 @@ body {
     color: #666;
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    color: rgba(0, 0, 0, 2);
 }
 
 .category-badge {
     background: var(--gradient-gold);
-    color: var(--text-dark);
+    color: var(--text-light);
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-weight: 600;
